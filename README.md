@@ -77,21 +77,23 @@ yolov8_ros or YOLO custom wrapper (integrated using cv_bridge + image_transport)
 
 1. Clone the Repo
 
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
-git clone 
+mkdir -p ~/mazen_ws/src
+cd ~/mazen_ws/src
+git clone https://github.com/mazen-daghari/mazen-ros2-package-.git
 cd ..
 colcon build
 source install/setup.bash
 2. Launch SLAM Mode
 
-ros2 launch nomade_rover bringup_slam.launch.py
-3. Launch AMCL (Navigation) Mode
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=True
 
-ros2 launch nomade_rover bringup_nav.launch.py map:=/path/to/your/map.yaml
+3. Launch NAV2 (Navigation) Mode
+
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=True
+
 4. Start YOLO Inference
 
-ros2 launch nomade_rover yolov8_inference.launch.py
+ros2 launch yolobot_recognition launch_yolov8.launch.py
 
 
 📂 Project Structure
